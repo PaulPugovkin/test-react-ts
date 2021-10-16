@@ -1,15 +1,20 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
-const TodoForm = () => {
-  const [title, setTitle] = useState<string>('');
+interface TodoFormProps {
+  onAdd(title: string): void
+}
+
+const TodoForm: React.FC<TodoFormProps> = props => {
+  // const [title, setTitle] = useState<string>('');
   const ref = useRef<HTMLInputElement>(null)
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
+  // const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setTitle(e.target.value);
+  // };
 
   const keyPressHandler = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-        console.log(ref.current!.value);
+      props.onAdd(ref.current!.value)
+        // console.log(ref.current!.value);
         ref.current!.value = ''
     //   console.log(title);
     //   setTitle('');
@@ -17,7 +22,7 @@ const TodoForm = () => {
   };
 
   return (
-    <div className="input-field">
+    <div className="input-field mt2">
       <input
         // onChange={changeHandler}
         // value={title}

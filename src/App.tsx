@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import {Route, Switch} from 'react-router-dom'
 import NavBar from './components/NavBar'
-import TodoForm from './components/TodoForm';
+import AboutPage from './pages/AboutPage';
+import TodosPage from './pages/TodosPage'
 
-function App() {
-  const [todos, setTodos] = useState([])
 
-  const addHandler = (title: string) => {
 
-  }
+
+const App: React.FC = () => {
 
   return (
     <>
       <NavBar/>
       <div className="container">
-        <TodoForm />
+        <Switch>
+        <Route exact path='/' component={TodosPage} />
+        <Route path='/about' component={AboutPage} />
+        </Switch>
       </div>
     </>
   );

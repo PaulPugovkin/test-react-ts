@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 const NavBar: React.FC = () => {
     return (
         <nav>
@@ -7,10 +9,10 @@ const NavBar: React.FC = () => {
                 </a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li>
-                    <a href="/">Список дел</a>
+                    <NavLink to="/">Список дел</NavLink>
                     </li>
                     <li>
-                    <a href="/">Информация</a>
+                    <NavLink to="/about">Информация</NavLink>
                     </li>
                 </ul>
             </div>
